@@ -2,18 +2,18 @@ package co.github.ecaballero.domain.models;
 
 import java.time.LocalDate;
 
-public class Enrollment {
+public class EnrollmentModel {
   private Long id;
   private Long studentId;
   private Long courseId;
   private LocalDate enrollmentDate;
   private EnrollmentStatus status;
 
-  public Enrollment(){
+  public EnrollmentModel(){
 
   }
 
-  public Enrollment(Long id, Long studentId, Long courseId, LocalDate enrollmentDate, EnrollmentStatus status) {
+  public EnrollmentModel(Long id, Long studentId, Long courseId, LocalDate enrollmentDate, EnrollmentStatus status) {
     this.id = id;
     this.studentId = studentId;
     this.courseId = courseId;
@@ -59,5 +59,16 @@ public class Enrollment {
 
   public void setStatus(EnrollmentStatus status) {
     this.status = status;
+  }
+
+  @Override
+  public String toString() {
+    return "EnrollmentModel{" +
+        "id=" + id +
+        ", studentId=" + studentId +
+        ", courseId=" + courseId +
+        ", enrollmentDate=" + enrollmentDate +
+        ", status=" + status +
+        '}';
   }
 }

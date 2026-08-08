@@ -2,18 +2,18 @@ package co.github.ecaballero.domain.models;
 
 import java.time.LocalDate;
 
-public class Student {
+public class StudentModel {
   private Long id;
   private String firstName;
   private String lastName;
   private String email;
   private LocalDate birthDate;
 
-  public Student(){
+  public StudentModel(){
 
   }
 
-  public Student(Long id, String firstName, String lastName, String email, LocalDate birthDate) {
+  public StudentModel(Long id, String firstName, String lastName, String email, LocalDate birthDate) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -59,6 +59,17 @@ public class Student {
 
   public void setBirthDate(LocalDate birthDate) {
     this.birthDate = birthDate;
+  }
+
+  @Override
+  public String toString() {
+    return "StudentModel{" +
+        "id=" + id +
+        ", firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", email='" + email + '\'' +
+        ", birthDate=" + birthDate +
+        '}';
   }
 }
 
