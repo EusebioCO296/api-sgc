@@ -1,8 +1,8 @@
-package co.github.ecaballero.application.service;
+package main.java.co.github.ecaballero.application.service;
 
-import co.github.ecaballero.application.Exceptions.StudentNotFoundException;
-import co.github.ecaballero.domain.models.StudentModel;
-import co.github.ecaballero.domain.repository.StudentRepository;
+import main.java.co.github.ecaballero.application.Exceptions.StudentNotFoundException;
+import main.java.co.github.ecaballero.domain.models.StudentModel;
+import main.java.co.github.ecaballero.domain.repository.StudentRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,7 +61,7 @@ public class StudentService implements StudentRepository {
 
   @Override
   public Optional<StudentModel> update (StudentModel student) {
-    if (studentRepository.findByStudentId(student.getId())) {
+    if (studentRepository.existsByStudentId(student.getId())) {
       throw new RuntimeException("Student id already exists" + student.getId());
     }
     if (studentRepository.existsByEmail(student.getEmail())) {

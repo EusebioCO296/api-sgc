@@ -1,6 +1,6 @@
-package co.github.ecaballero.domain.repository;
+package main.java.co.github.ecaballero.domain.repository;
 
-import co.github.ecaballero.domain.models.EnrollmentModel;
+import main.java.co.github.ecaballero.domain.models.EnrollmentModel;
 
 import java.util.List;
 import java.util.Optional;

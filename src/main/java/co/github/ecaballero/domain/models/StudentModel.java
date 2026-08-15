@@ -1,4 +1,4 @@
-package co.github.ecaballero.domain.models;
+package main.java.co.github.ecaballero.domain.models;
 
 import java.time.LocalDate;
 
