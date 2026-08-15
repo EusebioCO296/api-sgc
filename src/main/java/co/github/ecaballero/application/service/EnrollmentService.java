@@ -1,7 +1,7 @@
-package main.java.co.github.ecaballero.application.service;
+package co.github.ecaballero.application.service;
 
-import main.java.co.github.ecaballero.domain.models.EnrollmentModel;
-import main.java.co.github.ecaballero.domain.repository.EnrollmentRepository;
+import co.github.ecaballero.domain.models.EnrollmentModel;
+import co.github.ecaballero.domain.repository.EnrollmentRepository;
 
 import java.util.List;
 import java.util.Optional;

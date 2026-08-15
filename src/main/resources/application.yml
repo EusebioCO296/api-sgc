@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/api_sgc?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: notapp_user2
+    password: 12345678
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+    show-sql: true
+
+  properties:
+    hibernate:
+      format-sql: true

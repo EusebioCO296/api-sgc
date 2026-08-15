@@ -1,4 +1,4 @@
-package main.java.co.github.ecaballero.application.Exceptions;
+package co.github.ecaballero.application.Exceptions;
 
 public class BusinessException extends RuntimeException {
 

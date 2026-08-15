@@ -1,8 +1,8 @@
-package main.java.co.github.ecaballero.application.service;
+package co.github.ecaballero.application.service;
 
-import main.java.co.github.ecaballero.application.Exceptions.CourseNotFoundException;
-import main.java.co.github.ecaballero.domain.models.CourseModel;
-import main.java.co.github.ecaballero.domain.repository.CourseRepository;
+import co.github.ecaballero.application.Exceptions.CourseNotFoundException;
+import co.github.ecaballero.domain.models.CourseModel;
+import co.github.ecaballero.domain.repository.CourseRepository;
 
 import java.util.List;
 import java.util.Optional;

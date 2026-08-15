@@ -1,6 +1,6 @@
-package main.java.co.github.ecaballero.domain.repository;
+package co.github.ecaballero.domain.repository;
 
-import main.java.co.github.ecaballero.domain.models.CourseModel;
+import co.github.ecaballero.domain.models.CourseModel;
 
 import java.util.List;
 import java.util.Optional;

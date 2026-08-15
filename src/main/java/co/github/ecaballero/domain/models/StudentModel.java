@@ -1,12 +1,39 @@
-package main.java.co.github.ecaballero.domain.models;
+package co.github.ecaballero.domain.models;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.time.LocalDate;
 
+@Entity
+@Table (name = "students")
+
 public class StudentModel {
+
+  @Id
   private Long id;
+  @Column (
+      name = "first_name",
+      nullable = false,
+      length = 100
+  )
   private String firstName;
+  @Column (
+      name = "last_name",
+      nullable = false,
+      length = 100
+  )
   private String lastName;
+  @Column (
+      nullable = false,
+      length = 100
+  )
   private String email;
+  @Column (
+      nullable = false
+  )
   private LocalDate birthDate;
 
   public StudentModel(){

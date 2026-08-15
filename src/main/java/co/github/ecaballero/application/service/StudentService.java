@@ -1,8 +1,8 @@
-package main.java.co.github.ecaballero.application.service;
+package co.github.ecaballero.application.service;
 
-import main.java.co.github.ecaballero.application.Exceptions.StudentNotFoundException;
-import main.java.co.github.ecaballero.domain.models.StudentModel;
-import main.java.co.github.ecaballero.domain.repository.StudentRepository;
+import co.github.ecaballero.application.Exceptions.StudentNotFoundException;
+import co.github.ecaballero.domain.models.StudentModel;
+import co.github.ecaballero.domain.repository.StudentRepository;
 
 import java.util.List;
 import java.util.Optional;

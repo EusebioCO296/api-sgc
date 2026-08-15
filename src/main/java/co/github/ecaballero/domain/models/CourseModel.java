@@ -1,4 +1,4 @@
-package main.java.co.github.ecaballero.domain.models;
+package co.github.ecaballero.domain.models;
 
 public class CourseModel {
   private Long id;
