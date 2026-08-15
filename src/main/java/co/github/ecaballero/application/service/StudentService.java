@@ -61,8 +61,11 @@ public class StudentService implements StudentRepository {
 
   @Override
   public Optional<StudentModel> update (StudentModel student) {
-    if (studentRepository.findByStudentId(student.getId()).isEmpty()) {
-      throw new StudentNotFoundException("Not student found" + student.getId());
+    if (studentRepository.findByStudentId(student.getId())) {
+      throw new RuntimeException("Student id already exists" + student.getId());
+    }
+    if (studentRepository.existsByEmail(student.getEmail())) {
+      throw new RuntimeException("Student email already exists" + student.getEmail());
     }
     return studentRepository.update(student);
   }
@@ -72,7 +75,6 @@ public class StudentService implements StudentRepository {
     if (studentRepository.existsByEmail(email)) {
       throw new RuntimeException("Student with email " + email + " already exists");
     }
-
     return studentRepository.existsByEmail(email);
   }
 }
