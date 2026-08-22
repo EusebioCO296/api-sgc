@@ -1,12 +1,36 @@
 package co.github.ecaballero.domain.models;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "enrollments")
+
 public class EnrollmentModel {
+
+  @Id
   private Long id;
+  @Column (
+      name = "student_id",
+      nullable = false
+  )
   private Long studentId;
+  @Column (
+      name = "course_id",
+      nullable = false
+  )
   private Long courseId;
+  @Column (
+      name = "enrollment_date",
+      nullable = false
+  )
   private LocalDate enrollmentDate;
+  @Enumerated(EnumType.STRING)
+  @Column (
+      nullable = false,
+      length = 20
+  )
   private EnrollmentStatus status;
 
   public EnrollmentModel(){
