@@ -1,64 +1,20 @@
 package co.github.ecaballero.application.service;
 
 import co.github.ecaballero.domain.models.EnrollmentModel;
-import co.github.ecaballero.domain.repository.EnrollmentRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class EnrollmentService implements EnrollmentRepository {
+public interface EnrollmentService {
+  List<EnrollmentModel> findAll();
 
-  private final EnrollmentRepository enrollmentRepository;
+  Optional<EnrollmentModel> findByEnrollmentId(Long enrollmentId);
 
-  public EnrollmentService(EnrollmentRepository enrollmentRepository) {
-    this.enrollmentRepository = enrollmentRepository;
-  }
+  void delete(Long enrollmentId);
 
-  @Override
-  public List<EnrollmentModel> findAll() {
-    if (enrollmentRepository.findAll().isEmpty()) {
-      throw new RuntimeException("No enrollments found");
-    }
-    return enrollmentRepository.findAll();
-  }
+  boolean existsByEnrollmentId(Long enrollmentId);
 
-  @Override
-  public Optional<EnrollmentModel> findByEnrollmentId(Long enrollmentId) {
-    if (enrollmentRepository.findByEnrollmentId(enrollmentId).isEmpty()) {
-      throw new RuntimeException("No enrollments found");
-    }
-    return enrollmentRepository.findByEnrollmentId(enrollmentId);
-  }
+  Optional<EnrollmentModel> update(EnrollmentModel enrollment);
 
-  @Override
-  public void delete(Long enrollmentId) {
-    if (enrollmentRepository.existsByEnrollmentId(enrollmentId)) {
-      throw new RuntimeException("Enrollment already exists" + enrollmentId);
-    }
-    enrollmentRepository.delete(enrollmentId);
-  }
-
-  @Override
-  public boolean existsByEnrollmentId(Long enrollmentId) {
-    if (enrollmentRepository.findByEnrollmentId(enrollmentId).isEmpty()) {
-      throw new RuntimeException("Enrollment not found" + enrollmentId);
-    }
-    return enrollmentRepository.existsByEnrollmentId(enrollmentId);
-  }
-
-  @Override
-  public Optional<EnrollmentModel> update(EnrollmentModel enrollment) {
-    if (enrollmentRepository.existsByEnrollmentId(enrollment.getId())) {
-      throw new RuntimeException("Enrollment already exists" + enrollment.getId());
-    }
-    return enrollmentRepository.update(enrollment);
-  }
-
-  @Override
-  public EnrollmentModel save(EnrollmentModel enrollment) {
-    if (enrollmentRepository.existsByEnrollmentId(enrollment.getId())) {
-      throw new RuntimeException("Enrollment already exists" + enrollment.getId());
-    }
-    return enrollmentRepository.save(enrollment);
-  }
+  EnrollmentModel save(EnrollmentModel enrollment);
 }

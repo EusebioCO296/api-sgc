@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 @Service
-public abstract class StudentRepositoryService implements StudentRepository {
+public class StudentRepositoryService implements StudentRepository {
   private final StudentRepository studentRepository;
 
   public StudentRepositoryService(StudentRepository studentRepository) {
@@ -41,7 +41,7 @@ public abstract class StudentRepositoryService implements StudentRepository {
 
   @Override
   public boolean existsByStudentId(Long studentId) {
-    return  studentRepository.existsByStudentId(studentId);
+    return studentRepository.existsByStudentId(studentId);
   }
 
   @Override

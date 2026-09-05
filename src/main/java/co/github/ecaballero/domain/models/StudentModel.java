@@ -1,41 +1,16 @@
 package co.github.ecaballero.domain.models;
 
-import jakarta.persistence.*;
-
 import java.time.LocalDate;
-
-@Entity
-@Table (name = "students")
 
 public class StudentModel {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @Column (
-      name = "first_name",
-      nullable = false,
-      length = 100
-  )
   private String firstName;
-  @Column (
-      name = "last_name",
-      nullable = false,
-      length = 100
-  )
   private String lastName;
-  @Column (
-      nullable = false,
-      length = 100
-  )
   private String email;
-  @Column (
-      nullable = false
-  )
   private LocalDate birthDate;
 
-  public StudentModel(){
-
+  public StudentModel() {
   }
 
   public StudentModel(Long id, String firstName, String lastName, String email, LocalDate birthDate) {
@@ -97,4 +72,3 @@ public class StudentModel {
         '}';
   }
 }
-

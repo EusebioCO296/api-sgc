@@ -23,4 +23,6 @@ public interface StudentRepository {
   Optional<StudentModel> update(StudentModel student);
 
   boolean existsByEmail(String email);
+
+  Optional<StudentModel> findByEmail(String email);
 }
