@@ -1,6 +1,7 @@
 package co.github.ecaballero.application.service.impl;
 
-import co.github.ecaballero.application.Exceptions.StudentNotFoundException;
+import co.github.ecaballero.application.dto.CreateStudentDto;
+import co.github.ecaballero.domain.exception.StudentNotFoundException;
 import co.github.ecaballero.application.service.StudentService;
 import co.github.ecaballero.domain.models.StudentModel;
 import co.github.ecaballero.domain.repository.StudentRepository;
@@ -20,8 +21,15 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-  public StudentModel save(StudentModel student) {
-    validateStudentData(student);
+  public StudentModel create(CreateStudentDto createStudent) {
+
+    StudentModel student = new StudentModel(
+      createStudent.id(),
+      createStudent.firstName(),
+      createStudent.lastName(),
+      createStudent.email(),
+      createStudent.birthDate()
+    );
 
     if (student.getId() != null && studentRepository.existsByStudentId(student.getId())) {
       throw new IllegalArgumentException("Student with id " + student.getId() + " already exists");

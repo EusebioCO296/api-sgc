@@ -1,6 +1,6 @@
 package co.github.ecaballero.application.service.impl;
 
-import co.github.ecaballero.application.Exceptions.CourseNotFoundException;
+import co.github.ecaballero.domain.exception.CourseNotFoundException;
 import co.github.ecaballero.application.service.CourseService;
 import co.github.ecaballero.domain.models.CourseModel;
 import co.github.ecaballero.domain.repository.CourseRepository;

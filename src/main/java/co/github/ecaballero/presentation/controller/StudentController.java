@@ -1,14 +1,18 @@
 package co.github.ecaballero.presentation.controller;
 
-import co.github.ecaballero.presentation.response.ErrorResponse;
-import co.github.ecaballero.application.Exceptions.BusinessException;
+import co.github.ecaballero.application.dto.CreateStudentDto;
+import co.github.ecaballero.application.dto.response.StudentResponseDto;
+import co.github.ecaballero.application.dto.response.ErrorResponse;
+import co.github.ecaballero.domain.exception.BusinessException;
 import co.github.ecaballero.application.service.StudentService;
+import co.github.ecaballero.domain.exception.StudentAlreadyExistsException;
+import co.github.ecaballero.domain.exception.StudentEmailAlreadyException;
+import co.github.ecaballero.domain.exception.StudentPhoneAlreadyExistsException;
 import co.github.ecaballero.domain.models.StudentModel;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/students")
@@ -22,9 +26,15 @@ public class StudentController {
   }
 
   @PostMapping
-  public ResponseEntity<StudentModel> createStudent(@RequestBody StudentModel student) {
-    StudentModel createdStudent = studentService.save(student);
-    return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
+  public ResponseEntity<StudentModel> createStudent(@Valid @RequestBody CreateStudentDto createStudentDto) {
+    try {
+      var created = studentService.create(createStudentDto);
+      return ResponseEntity.status(HttpStatus.CREATED).body(StudentResponseDto.from(created));
+    } catch (StudentAlreadyExistsException | StudentEmailAlreadyException | StudentPhoneAlreadyExistsException e) {
+      return ResponseEntity.status(HttpStatus.CONFLICT).body(ErrorResponse.of(e.getMessage()));
+    } catch (BusinessException e) {
+      return ResponseEntity.badRequest().body(ErrorResponse.of(e.getMessage()));
+    }
   }
 
   @GetMapping("/{id}")

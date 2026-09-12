@@ -1,12 +1,13 @@
 package co.github.ecaballero.application.service;
 
+import co.github.ecaballero.application.dto.CreateStudentDto;
 import co.github.ecaballero.domain.models.StudentModel;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface StudentService {
-  StudentModel save(StudentModel student);
+  StudentModel create(CreateStudentDto student);
 
   Optional<StudentModel> findByStudentId(Long studentId);
 

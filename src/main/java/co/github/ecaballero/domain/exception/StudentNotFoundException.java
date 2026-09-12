@@ -1,6 +1,6 @@
-package co.github.ecaballero.application.Exceptions;
+package co.github.ecaballero.domain.exception;
 
-public class StudentNotFoundException extends RuntimeException {
+public class StudentNotFoundException extends ResourceNotFoundException {
 
   public StudentNotFoundException(String message) {
     super(message);

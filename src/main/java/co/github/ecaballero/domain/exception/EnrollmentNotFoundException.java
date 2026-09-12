@@ -1,6 +1,6 @@
-package co.github.ecaballero.application.Exceptions;
+package co.github.ecaballero.domain.exception;
 
-public class EnrollmentNotFoundException extends RuntimeException {
+public class EnrollmentNotFoundException extends ResourceNotFoundException {
   public EnrollmentNotFoundException(String message) {
     super(message);
   }

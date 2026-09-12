@@ -1,4 +1,4 @@
-package co.github.ecaballero.application.Exceptions;
+package co.github.ecaballero.domain.exception;
 
 public class BusinessException extends RuntimeException {
 
