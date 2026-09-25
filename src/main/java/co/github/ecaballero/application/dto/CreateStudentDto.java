@@ -7,16 +7,18 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record CreateStudentDto(
-    @NotNull
-    Long id,
+
     @NotBlank
     String firstName,
+
     @NotBlank
     String lastName,
-    @Email
-    String email,
-    @NotBlank
-    LocalDate birthDate
-) {
 
-}
+    @Email
+    @NotBlank
+    String email,
+
+    @NotNull
+    LocalDate birthDate
+
+) {}

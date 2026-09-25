@@ -7,16 +7,26 @@ import java.util.Optional;
 
 public interface EnrollmentRepository {
 
-  List<EnrollmentModel> findAll();
+  EnrollmentModel save(EnrollmentModel enrollment);
 
   Optional<EnrollmentModel> findByEnrollmentId(Long enrollmentId);
+
+  List<EnrollmentModel> findAll();
+
+  Optional<EnrollmentModel> update(EnrollmentModel enrollment);
 
   void delete(Long enrollmentId);
 
   boolean existsByEnrollmentId(Long enrollmentId);
 
-  Optional<EnrollmentModel> update(EnrollmentModel enrollment);
+  boolean existsByStudentIdAndCourseId(
+      Long studentId,
+      Long courseId
+  );
 
-  EnrollmentModel save(EnrollmentModel enrollment);
+  long countByCourseId(Long courseId);
 
+  List<EnrollmentModel> findByStudentId(Long studentId);
+
+  List<EnrollmentModel> findByCourseId(Long courseId);
 }

@@ -24,5 +24,4 @@ public interface StudentRepository {
 
   boolean existsByEmail(String email);
 
-  Optional<StudentModel> findByEmail(String email);
 }

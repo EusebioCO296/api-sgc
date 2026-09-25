@@ -14,3 +14,9 @@ spring:
   properties:
     hibernate:
       format-sql: true
+
+  server:
+    error:
+      include-message: never
+      include-stacktrace: never
+      include-binding-errors: never

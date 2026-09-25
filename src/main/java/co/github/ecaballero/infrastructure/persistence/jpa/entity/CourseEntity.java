@@ -1,17 +1,45 @@
-package co.github.ecaballero.domain.models;
+package co.github.ecaballero.infrastructure.persistence.jpa.entity;
 
-public class CourseModel {
+import jakarta.persistence.*;
 
+@Entity
+@Table(
+    name = "courses",
+    indexes = {
+        @Index(
+            name = "idx_course_code",
+            columnList = "code",
+            unique = true
+        )
+    }
+)
+public class CourseEntity {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Column(
+      nullable = false,
+      unique = true,
+      length = 20
+  )
   private String code;
+  @Column(
+      nullable = false,
+      length = 100
+  )
   private String name;
+  @Column(length = 500)
   private String description;
+  @Column(
+      name = "max_capacity",
+      nullable = false
+  )
   private Integer maxCapacity;
 
-  public CourseModel() {
+  public CourseEntity() {
   }
 
-  public CourseModel(
+  public CourseEntity(
       Long id,
       String code,
       String name,
@@ -63,16 +91,5 @@ public class CourseModel {
 
   public void setMaxCapacity(Integer maxCapacity) {
     this.maxCapacity = maxCapacity;
-  }
-
-  @Override
-  public String toString() {
-    return "CourseModel{" +
-        "id=" + id +
-        ", code='" + code + '\'' +
-        ", name='" + name + '\'' +
-        ", description='" + description + '\'' +
-        ", maxCapacity=" + maxCapacity +
-        '}';
   }
 }

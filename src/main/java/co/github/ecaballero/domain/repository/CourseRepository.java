@@ -7,16 +7,17 @@ import java.util.Optional;
 
 public interface CourseRepository {
 
-  List<CourseModel> findAll();
+  CourseModel save(CourseModel course);
 
   Optional<CourseModel> findByCourseId(Long courseId);
 
-  void delete(Long courseId);
-
-  CourseModel save(CourseModel course);
+  List<CourseModel> findAll();
 
   boolean existsByCourseId(Long courseId);
 
-  Optional<CourseModel> update(CourseModel course);
+  boolean existsByCode(String code);
 
+  void delete(Long courseId);
+
+  Optional<CourseModel> update(CourseModel course);
 }

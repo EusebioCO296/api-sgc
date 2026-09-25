@@ -1,23 +1,14 @@
-  package co.github.ecaballero.infrastructure.persistence.jpa.repository;
+package co.github.ecaballero.infrastructure.persistence.jpa.repository;
 
-  import co.github.ecaballero.domain.models.StudentModel;
-  import org.springframework.data.jpa.repository.JpaRepository;
+import co.github.ecaballero.infrastructure.persistence.jpa.entity.StudentEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-  import java.util.List;
-  import java.util.Optional;
+import java.util.Optional;
 
-  public interface JpaStudentRepository extends JpaRepository<StudentModel, Long> {
-    StudentModel save(StudentModel student);
+public interface JpaStudentRepository extends JpaRepository<StudentEntity, Long> {
 
-    Optional<StudentModel> findById(Long id);
+  Optional<StudentEntity> findByEmail(String email);
 
-    List<StudentModel> findAll();
+  boolean existsByEmail(String email);
 
-    boolean existsById(Long id);
-
-    //void delete(Long studentId);
-
-    //Optional<StudentModel> update(StudentModel student);
-
-    boolean existsByEmail(String email);
-  }
+}

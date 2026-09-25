@@ -1,20 +1,28 @@
 package co.github.ecaballero.application.service;
 
+import co.github.ecaballero.application.dto.CreateEnrollmentDto;
+import co.github.ecaballero.application.dto.UpdateEnrollmentDto;
 import co.github.ecaballero.domain.models.EnrollmentModel;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface EnrollmentService {
+
+  EnrollmentModel create(CreateEnrollmentDto enrollment);
+
+  EnrollmentModel findByEnrollmentId(Long enrollmentId);
+
   List<EnrollmentModel> findAll();
 
-  Optional<EnrollmentModel> findByEnrollmentId(Long enrollmentId);
+  EnrollmentModel update(
+      Long enrollmentId,
+      UpdateEnrollmentDto enrollment);
 
   void delete(Long enrollmentId);
 
   boolean existsByEnrollmentId(Long enrollmentId);
 
-  Optional<EnrollmentModel> update(EnrollmentModel enrollment);
+  List<EnrollmentModel> findByStudentId(Long studentId);
 
-  EnrollmentModel save(EnrollmentModel enrollment);
+  List<EnrollmentModel> findByCourseId(Long courseId);
 }

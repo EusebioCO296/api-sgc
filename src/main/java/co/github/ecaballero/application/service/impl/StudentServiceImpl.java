@@ -24,16 +24,12 @@ public class StudentServiceImpl implements StudentService {
   public StudentModel create(CreateStudentDto createStudent) {
 
     StudentModel student = new StudentModel(
-      createStudent.id(),
+      null,
       createStudent.firstName(),
       createStudent.lastName(),
       createStudent.email(),
       createStudent.birthDate()
     );
-
-    if (student.getId() != null && studentRepository.existsByStudentId(student.getId())) {
-      throw new IllegalArgumentException("Student with id " + student.getId() + " already exists");
-    }
 
     if (studentRepository.existsByEmail(student.getEmail())) {
       throw new IllegalArgumentException("Student with email " + student.getEmail() + " already exists");
@@ -43,14 +39,13 @@ public class StudentServiceImpl implements StudentService {
   }
   
   @Override
-  public Optional<StudentModel> findByStudentId(Long studentId) {
+  public StudentModel findByStudentId(Long studentId) {
     validateId(studentId);
-
-    Optional<StudentModel> student = studentRepository.findByStudentId(studentId);
-    if (student.isEmpty()) {
-      throw new StudentNotFoundException("Student not found with id: " + studentId);
-    }
-    return student;
+    return studentRepository.findByStudentId(studentId)
+        .orElseThrow(() ->
+            new StudentNotFoundException(
+                "Student not found with id: " + studentId
+            ));
   }
 
   @Override
@@ -93,13 +88,6 @@ public class StudentServiceImpl implements StudentService {
     if (!studentRepository.existsByStudentId(student.getId())) {
       throw new StudentNotFoundException("Cannot update. Student not found with id: " + student.getId());
     }
-
-    // Al devolver Optional<StudentModel>, 'existing' es de tipo StudentModel
-    studentRepository.findByEmail(student.getEmail()).ifPresent(existing -> {
-      if (existing.getId() != null && !existing.getId().equals(student.getId())) {
-        throw new IllegalArgumentException("Email " + student.getEmail() + " is already in use by another student");
-      }
-    });
 
     return studentRepository.update(student);
   }

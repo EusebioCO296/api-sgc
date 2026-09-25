@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface StudentService {
   StudentModel create(CreateStudentDto student);
 
-  Optional<StudentModel> findByStudentId(Long studentId);
+  StudentModel findByStudentId(Long studentId);
 
   List<StudentModel> findAll();
 
